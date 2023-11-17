@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -83,10 +84,17 @@ public class App extends JFrame implements ActionListener {
                 ex.printStackTrace();
             }
         } else if (e.getSource() == btnThem) {
-            String maSV = txtMaSV.getText().trim();
-            String hoTen = txtHoTen.getText().trim();
-            String lop = txtLop.getText().trim();
-            String gpa = txtGPA.getText().trim();
+            String maSV = JOptionPane.showInputDialog(this, "Nhập mã sinh viên:");
+            String hoTen = JOptionPane.showInputDialog(this, "Nhập họ tên:");
+            String lop = JOptionPane.showInputDialog(this, "Nhập lớp:");
+            String gpa = JOptionPane.showInputDialog(this, "Nhập GPA:");
+            if (maSV == null || hoTen == null || lop == null || gpa == null) {
+                return;
+            }
+            maSV = maSV.trim();
+            hoTen = hoTen.trim();
+            lop = lop.trim();
+            gpa = gpa.trim();
             if (maSV.equals("") || hoTen.equals("") || lop.equals("") || gpa.equals("")) {
                 return;
             }
@@ -95,6 +103,7 @@ public class App extends JFrame implements ActionListener {
                 ps.setString(1, maSV);
                 rs = ps.executeQuery();
                 if (rs.next()) {
+                    JOptionPane.showMessageDialog(this, "Mã sinh viên đã tồn tại!");
                     return;
                 }
                 ps = conn.prepareStatement("INSERT INTO SinhVien VALUES (?, ?, ?, ?)");
@@ -113,9 +122,15 @@ public class App extends JFrame implements ActionListener {
                 return;
             }
             String maSV = (String) model.getValueAt(row, 0);
-            String hoTen = txtHoTen.getText().trim();
-            String lop = txtLop.getText().trim();
-            String gpa = txtGPA.getText().trim();
+            String hoTen = JOptionPane.showInputDialog(this, "Nhập họ tên:", model.getValueAt(row, 1));
+            String lop = JOptionPane.showInputDialog(this, "Nhập lớp:", model.getValueAt(row, 2));
+            String gpa = JOptionPane.showInputDialog(this, "Nhập GPA:", model.getValueAt(row, 3));
+            if (hoTen == null || lop == null || gpa == null) {
+                return;
+            }
+            hoTen = hoTen.trim();
+            lop = lop.trim();
+            gpa = gpa.trim();
             if (hoTen.equals("") || lop.equals("") || gpa.equals("")) {
                 return;
             }

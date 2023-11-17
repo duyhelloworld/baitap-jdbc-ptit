@@ -5,8 +5,8 @@ public class AppConnection {
     public static Connection getConn() {
         Connection conn = null;
         String usr = "root";
-        String pss = "12345678";
-        String url = "jdbc:mysql://localhost:3306";        
+        String pss = "MySQL_219";
+        String url = "jdbc:mysql://localhost:3307/test";        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
                 conn = DriverManager.getConnection(url, usr, pss);

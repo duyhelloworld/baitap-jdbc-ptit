@@ -1,3 +1,5 @@
+-- Active: 1700220173185@@127.0.0.1@3307@test
+CREATE DATABASE test;
 CREATE TABLE SinhVien (
     masv VARCHAR(20) PRIMARY KEY,
     hoten VARCHAR(255),
