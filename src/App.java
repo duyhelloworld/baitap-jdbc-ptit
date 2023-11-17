@@ -46,7 +46,7 @@ public class App extends JFrame implements ActionListener {
         model.addColumn("Họ tên");
         model.addColumn("Lớp");
         model.addColumn("GPA");
-        add(pnNorth, BorderLayout.NORTH);
+        // add(pnNorth, BorderLayout.NORTH);
         add(pnSouth, BorderLayout.SOUTH);
         add(pnCenter, BorderLayout.CENTER);
         btnHienThi.addActionListener(this);
