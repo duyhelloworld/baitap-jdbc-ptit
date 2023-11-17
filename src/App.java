@@ -62,7 +62,8 @@ public class App extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new App();
+        App app = new App();
+        app.btnHienThi.doClick();
     }
 
     @Override
@@ -164,6 +165,13 @@ public class App extends JFrame implements ActionListener {
             txtHoTen.setText("");
             txtLop.setText("");
             txtGPA.setText("");
+            try {
+                ps = conn.prepareStatement("DELETE FROM SinhVien");
+                ps.executeUpdate();
+                btnHienThi.doClick();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
         }
     }
 }
