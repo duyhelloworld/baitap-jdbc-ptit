@@ -116,6 +116,8 @@ public class App extends JFrame implements ActionListener {
                 btnHienThi.doClick();
             } catch (SQLException ex) {
                 ex.printStackTrace();
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "GPA không hợp lệ!");
             }
         } else if (e.getSource() == btnCapNhat) {
             int row = table.getSelectedRow();
@@ -145,6 +147,8 @@ public class App extends JFrame implements ActionListener {
                 btnHienThi.doClick();
             } catch (SQLException ex) {
                 ex.printStackTrace();
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "GPA phải là số thực!");
             }
         } else if (e.getSource() == btnXoa) {
             int row = table.getSelectedRow();
